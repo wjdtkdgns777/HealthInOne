@@ -13,7 +13,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="580dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/loginbg"
                 />
@@ -40,7 +40,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:background="@drawable/background_radius"
-                    android:layout_margin="5dp"
+                    android:layout_margin="7dp"
                     />
                 <Button
                     android:id="@+id/joinBtn"
@@ -50,7 +50,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:background="@drawable/background_radius"
-                    android:layout_margin="5dp"
+                    android:layout_margin="7dp"
                     />
                 <Button
                     android:id="@+id/noAccountBtn"
@@ -60,7 +60,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:background="@drawable/background_radius"
-                    android:layout_margin="5dp"
+                    android:layout_margin="7dp"
                     />
             </LinearLayout>
 
