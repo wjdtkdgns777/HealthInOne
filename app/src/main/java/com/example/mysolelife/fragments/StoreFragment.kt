@@ -29,8 +29,7 @@ import java.util.*
 
 
 class StoreFragment : Fragment() {
-    private lateinit var binding : FragmentStoreBinding
-
+    private lateinit var binding: FragmentStoreBinding
 
 
     lateinit var editText: EditText;
@@ -58,47 +57,46 @@ class StoreFragment : Fragment() {
         editText = v.findViewById(R.id.editTextTextPersonName)
         messagesList = v.findViewById(R.id.messagesList)
 
-        var imageLoader: ImageLoader = object: ImageLoader {
+        var imageLoader: ImageLoader = object : ImageLoader {
             override fun loadImage(imageView: ImageView?, url: String?, payload: Any?) {
-
             }
-
 
         }
         adapter = MessagesListAdapter<Message>("1", imageLoader)
         messagesList.setAdapter(adapter)
 
-        us = User("1", "jsh","")
-        chatgpt = User("2", "ChatGPT","")
+        us = User("1", "jsh", "")
+        chatgpt = User("2", "ChatGPT", "")
 
-        binding.imageButton.setOnClickListener{
-            var message:Message = Message("m1",editText.text.toString(),us,Calendar.getInstance().time)
-            adapter.addToStart(message,true)
+        binding.imageButton.setOnClickListener {
+            var message: Message =
+                Message("m1", editText.text.toString(), us, Calendar.getInstance().time)
+            adapter.addToStart(message, true)
             performAction(editText.text.toString())
             editText.text.clear()
         }
 
 
-        binding.homeTab.setOnClickListener{
+        binding.homeTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
         }
 
-        binding.talkTab.setOnClickListener{
+        binding.talkTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
         }
 
-        binding.bookmarkTab.setOnClickListener{
+        binding.bookmarkTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_storeFragment_to_bookmarkFragment)
         }
 
-        binding.tipTab.setOnClickListener{
+        binding.tipTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
         }
 
         return binding.root
     }
 
-    fun performAction(input:String){
+    fun performAction(input: String) {
         // Instantiate the RequestQueue.
 
         print(input)
@@ -113,14 +111,15 @@ class StoreFragment : Fragment() {
 
 
 // Request a string response from the provided URL.
-        val stringRequest = object: JsonObjectRequest(
+        val stringRequest = object : JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             Response.Listener<JSONObject> { response ->
                 // Display the first 500 characters of the response string.
 
 
-                var answer = response.getJSONArray("choices").getJSONObject(0).getJSONObject("message")
-                    .getString("content")
+                var answer =
+                    response.getJSONArray("choices").getJSONObject(0).getJSONObject("message")
+                        .getString("content")
                 var message = Message(
                     "M2",
                     answer.trim { it <= ' ' },
@@ -128,24 +127,26 @@ class StoreFragment : Fragment() {
                     Calendar.getInstance().time,
 
                     )
-                adapter.addToStart(message,true)
+                adapter.addToStart(message, true)
             },
-            Response.ErrorListener { })
-        {
+            Response.ErrorListener { }) {
             override fun getHeaders(): MutableMap<String, String> {
-                var map = HashMap<String,String>()
-                map.put("Content-Type","application/json")
-                map.put("Authorization","Bearer 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")
+                var map = HashMap<String, String>()
+                map.put("Content-Type", "application/json")
+                map.put(
+                    "Authorization",
+                    "Bearer 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"
+                )
                 return map
             }
         }
-        stringRequest.setRetryPolicy(object: RetryPolicy {
+        stringRequest.setRetryPolicy(object : RetryPolicy {
             override fun getCurrentTimeout(): Int {
                 return 60000;
             }
 
             override fun getCurrentRetryCount(): Int {
-                return 15;
+                return 5;
             }
 
             override fun retry(error: VolleyError?) {
