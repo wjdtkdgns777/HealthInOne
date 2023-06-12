@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mysolelife.R
+import com.google.firebase.ktx.Firebase
 
 class ContentListActivity : AppCompatActivity() {
 
