@@ -42,6 +42,10 @@ class HomeFragment : Fragment() {
             it.findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
         }
 
+        binding.chatButton.setOnClickListener{
+            it.findNavController().navigate(R.id.action_homeFragment_to_chatFragment)
+        }
+
         return binding.root
     }
 
