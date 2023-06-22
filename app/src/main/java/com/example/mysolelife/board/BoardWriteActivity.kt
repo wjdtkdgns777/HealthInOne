@@ -22,6 +22,8 @@ class BoardWriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityBoardWriteBinding
 
+    private var isImageUpload = false
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,13 +54,16 @@ class BoardWriteActivity : AppCompatActivity() {
                 .setValue(BoardModel(title,content,uid,time))
 
             Toast.makeText(this,"게시글 입력 완료",Toast.LENGTH_LONG).show()
-            imageUpload(key)
+            if(isImageUpload==true) {
+                imageUpload(key)
+            }
             finish()
         }
 
         binding.imageArea.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery,100)
+            isImageUpload = true
         }
     }
 
@@ -67,7 +72,6 @@ class BoardWriteActivity : AppCompatActivity() {
         val storage = Firebase.storage
         val storageRef = storage.reference
         val mountainsRef = storageRef.child(key+".png")
-
 
         val imageView = binding.imageArea
 
