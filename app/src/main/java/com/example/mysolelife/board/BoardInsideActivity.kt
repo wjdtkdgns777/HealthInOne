@@ -69,7 +69,7 @@ class BoardInsideActivity : AppCompatActivity() {
             Toast.makeText(this,"수정버튼을 눌렀습니다.",Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, BoardEditActivity::class.java)
-            intent.getStringExtra("key").toString()
+            intent.putExtra("key",key).toString()
             startActivity(intent)
 
         }

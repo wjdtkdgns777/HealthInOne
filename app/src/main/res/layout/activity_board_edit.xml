@@ -71,14 +71,14 @@
                     android:src="@drawable/plusbtn" />
 
                 <Button
-                    android:id="@+id/writeBtn"
+                    android:id="@+id/editBtn"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="50dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/background_radius_yellow"
-                    android:text="입력"
+                    android:text="수정"
                     android:textColor="@color/white" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
