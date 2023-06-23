@@ -1,30 +1,22 @@
 package com.example.mysolelife.fragments
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.ImageView
+
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
-import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.RetryPolicy
-import com.android.volley.VolleyError
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
-import com.example.chatgpt.Message
-import com.example.chatgpt.User
+
 import com.example.mysolelife.R
 import com.example.mysolelife.databinding.FragmentStoreBinding
-import com.stfalcon.chatkit.commons.ImageLoader
-import com.stfalcon.chatkit.messages.MessagesList
-import com.stfalcon.chatkit.messages.MessagesListAdapter
-import org.json.JSONArray
-import org.json.JSONObject
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.auth.ktx.userProfileChangeRequest
+import com.google.firebase.ktx.Firebase
+
 import java.util.*
 
 
@@ -42,6 +34,49 @@ class StoreFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store, container, false)
 
+        val user = Firebase.auth.currentUser
+
+        user?.let {
+            // Name, email address, and profile photo Url
+            val name = it.displayName
+            val email = it.email
+            val photoUrl = it.photoUrl
+
+            // Update the views
+            // For example:
+            binding.userImage.setImageURI(photoUrl)
+            binding.editUserName.setText(name)
+            binding.editEmail.setText(email)
+        }
+
+        binding.btnChangeImage.setOnClickListener {
+            // Here add your code to handle the image change.
+        }
+
+        binding.btnUpdateName.setOnClickListener {
+            val newUserName = binding.editUserName.text.toString()
+            val profileUpdates = userProfileChangeRequest {
+                displayName = newUserName
+            }
+
+            user!!.updateProfile(profileUpdates)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User name updated.")
+                    }
+                }
+        }
+
+        binding.btnUpdateEmail.setOnClickListener {
+            val newEmail = binding.editEmail.text.toString()
+
+            user!!.updateEmail(newEmail)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User email address updated.")
+                    }
+                }
+        }
 
 
         binding.homeTab.setOnClickListener {

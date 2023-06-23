@@ -6,23 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".fragments.ChatFragment">
 
-    <com.stfalcon.chatkit.messages.MessagesList
-        android:id="@+id/messagesList2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/cardView"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.stfalcon.chatkit.messages.MessagesList
+            android:id="@+id/messagesList2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/cardView"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:cardCornerRadius="60dp"
+        app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardElevation="8dp"
+        >
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -36,10 +38,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        app:cardCornerRadius="35dp"
+        app:cardCornerRadius="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/cardView"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardElevation="8dp"
+        >
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
@@ -48,7 +52,8 @@
             android:layout_margin="7dp"
             android:ems="10"
             android:inputType="textPersonName"
-             />
+
+            />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
