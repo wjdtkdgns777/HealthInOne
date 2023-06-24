@@ -78,6 +78,17 @@ class StoreFragment : Fragment() {
                 }
         }
 
+        binding.btnUpdatePassword.setOnClickListener {
+            val newPassword = binding.editPassword.text.toString()
+
+            user!!.updatePassword(newPassword)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Log.d(TAG, "User email address updated.")
+                    }
+                }
+        }
+
 
         binding.homeTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_storeFragment_to_homeFragment)
