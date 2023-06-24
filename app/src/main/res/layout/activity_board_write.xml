@@ -27,6 +27,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:text="글쓰기 페이지"
+                        android:textStyle="bold"
                         android:textColor="@color/black" />
                 </LinearLayout>
 
@@ -52,7 +53,7 @@
                 <EditText
                     android:id="@+id/contentArea"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="200dp"
                     android:layout_margin="20dp"
                     android:background="@color/transparent"
                     android:hint="내용을 입력해주세요" />
@@ -63,9 +64,10 @@
                     android:background="@color/black" />
 
                 <ImageView
+                    android:layout_gravity="center"
                     android:id="@+id/imageArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
                     android:layout_marginTop="20dp"
                     android:src="@drawable/plusbtn" />
 
@@ -74,7 +76,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="30dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/background_radius_yellow"
                     android:text="입력"

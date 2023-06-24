@@ -39,8 +39,9 @@ class BoardListLVAdapter(val boardList : MutableList<BoardModel>): BaseAdapter()
         val time = view?.findViewById<TextView>(R.id.timeArea)
 
 
+        //게시글 누구인지 색으로 표시
         if(boardList[position].uid.equals(FBAuth.getUid())){
-            itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#00aaff"))
+            //itemLinearLayoutView?.setBackgroundColor(Color.parseColor("#00aaff"))
         }
 
         title!!.text = boardList[position].title

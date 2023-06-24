@@ -104,7 +104,7 @@ class BoardInsideActivity : AppCompatActivity() {
                 )
             )
 
-        Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_LONG).show()
         binding.commentArea.setText("")
     }
 
@@ -118,7 +118,7 @@ class BoardInsideActivity : AppCompatActivity() {
         val alertDialog = mBuilder.show()
         alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
 
-            Toast.makeText(this, "수정버튼을 눌렀습니다.", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "수정버튼을 눌렀습니다.", Toast.LENGTH_LONG).show()
 
             val intent = Intent(this, BoardEditActivity::class.java)
             intent.putExtra("key", key).toString()
@@ -128,7 +128,7 @@ class BoardInsideActivity : AppCompatActivity() {
         alertDialog.findViewById<Button>(R.id.removeBtn)?.setOnClickListener {
 
             FBRef.boardRef.child(key).removeValue()
-            Toast.makeText(this, "삭제완료", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this, "삭제완료", Toast.LENGTH_LONG).show()
             finish()
 
         }
@@ -174,10 +174,10 @@ class BoardInsideActivity : AppCompatActivity() {
                     val writeUid = dataModel.uid
 
                     if (myUid.equals(writeUid)) {
-                        Toast.makeText(baseContext, "내가 글쓴이", Toast.LENGTH_LONG).show()
+                      //  Toast.makeText(baseContext, "내가 글쓴이", Toast.LENGTH_LONG).show()
                         binding.boardSettingIcon.isVisible = true
                     } else {
-                        Toast.makeText(baseContext, "내가 글쓴이 아님", Toast.LENGTH_LONG).show()
+                        // Toast.makeText(baseContext, "내가 글쓴이 아님", Toast.LENGTH_LONG).show()
 
                     }
 

@@ -56,7 +56,7 @@ class BoardEditActivity : AppCompatActivity() {
                     FBAuth.getTime()
                 )
             )
-        Toast.makeText(this, "수정완료", Toast.LENGTH_LONG).show()
+        //Toast.makeText(this, "수정완료", Toast.LENGTH_LONG).show()
         finish()
     }
 

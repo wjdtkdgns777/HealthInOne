@@ -26,17 +26,17 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-        binding.tipTab.setOnClickListener{
-            it.findNavController().navigate(R.id.action_homeFragment_to_tipFragment)
-        }
+//        binding.tipTab.setOnClickListener{
+//            it.findNavController().navigate(R.id.action_homeFragment_to_tipFragment)
+//        }
 
         binding.talkTab.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_talkFragment)
         }
 
-        binding.bookmarkTab.setOnClickListener{
-            it.findNavController().navigate(R.id.action_homeFragment_to_bookmarkFragment)
-        }
+//        binding.bookmarkTab.setOnClickListener{
+//            it.findNavController().navigate(R.id.action_homeFragment_to_bookmarkFragment)
+//        }
 
         binding.storeTab.setOnClickListener{
             it.findNavController().navigate(R.id.action_homeFragment_to_storeFragment)
