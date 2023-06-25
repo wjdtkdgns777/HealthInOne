@@ -1,7 +1,11 @@
 package com.example.mysolelife.fragments
 
+import android.app.Activity
 import android.content.ContentValues.TAG
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,19 +14,24 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 
 import com.example.mysolelife.R
 import com.example.mysolelife.databinding.FragmentStoreBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
+import com.yalantis.ucrop.UCrop
+import java.io.File
 
 import java.util.*
 
 
 class StoreFragment : Fragment() {
     private lateinit var binding: FragmentStoreBinding
-
+    private val GALLERY_REQUEST_CODE = 1
+    private val UCROP_REQUEST_CODE = 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,13 +53,18 @@ class StoreFragment : Fragment() {
 
             // Update the views
             // For example:
-            binding.userImage.setImageURI(photoUrl)
+            Glide.with(this)
+                .load(photoUrl)
+                .into(binding.userImage)
             binding.editUserName.setText(name)
             binding.editEmail.setText(email)
         }
 
+
         binding.btnChangeImage.setOnClickListener {
-            // Here add your code to handle the image change.
+            val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+
+            startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE)
         }
 
         binding.btnUpdateName.setOnClickListener {
@@ -109,5 +123,51 @@ class StoreFragment : Fragment() {
         return binding.root
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data?.data != null) {
+            val selectedImageUri = data.data
+
+            val destinationUri = Uri.fromFile(File(context?.cacheDir, "cropped"))
+
+            val options = UCrop.Options()
+            options.setCircleDimmedLayer(true)
+
+            if (isAdded) {
+                UCrop.of(selectedImageUri!!, destinationUri)
+                    .withOptions(options)
+                    .start(context ?: return, this, UCROP_REQUEST_CODE)
+            }
+
+
+        } else if (requestCode == UCROP_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            val resultUri = UCrop.getOutput(data)
+
+            if (resultUri != null) {
+                val user = Firebase.auth.currentUser
+                val uid = user?.uid
+
+                val storageReference = Firebase.storage.reference.child("userProfiles/$uid")
+
+                storageReference.putFile(resultUri)
+                    .addOnSuccessListener {
+                        storageReference.downloadUrl.addOnSuccessListener { uri ->
+                            val profileUpdates = userProfileChangeRequest {
+                                photoUri = uri
+                            }
+
+                            user!!.updateProfile(profileUpdates)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Glide.with(this)
+                                            .load(uri)
+                                            .into(binding.userImage)
+                                    }
+                                }
+                        }
+                    }
+            }
+        }
+    }
 }

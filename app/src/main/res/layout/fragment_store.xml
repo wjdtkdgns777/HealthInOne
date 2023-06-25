@@ -16,8 +16,8 @@
                 android:id="@+id/linearLayout1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@drawable/grad"
+                android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
@@ -26,10 +26,10 @@
                     android:layout_height="100dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="40dp"
-                android:src="@drawable/logo"
-                android:scaleType="centerCrop"
-                android:cropToPadding="true"
-                android:background="@drawable/circle_image" />
+                    android:background="@drawable/circle_image"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                     />
 
                 <Button
                     android:id="@+id/btnChangeImage"
@@ -37,11 +37,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="16dp"
+                    android:background="@drawable/custom_button"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
-
-                android:text="Change Image"
-                android:background="@drawable/custom_button" />
+                    android:text="프로필 이미지 변경" />
 
                 <View
                     android:layout_width="match_parent"
@@ -52,11 +51,11 @@
                 android:id="@+id/userProfileContainer"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout1"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout4">
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
 
-            <LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -66,7 +65,7 @@
                         android:id="@+id/editUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="User Name" />
+                        android:hint="닉네임" />
 
                     <Button
                         android:id="@+id/btnUpdateName"
@@ -74,17 +73,17 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:text="Update Name"
+                        android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        android:background="@drawable/custom_button" />
+                        android:text="닉네임 업데이트" />
 
                     <EditText
                         android:id="@+id/editEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:hint="Email" />
+                        android:hint="이메일" />
 
                     <Button
                         android:id="@+id/btnUpdateEmail"
@@ -92,19 +91,18 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:text="Update Email"
                         android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        />
+                        android:text="이메일 업데이트" />
 
                     <EditText
                         android:id="@+id/editPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:inputType="textPassword"
-                        android:hint="Password" />
+                        android:hint="비밀번호"
+                        android:inputType="textPassword" />
 
                     <Button
                         android:id="@+id/btnUpdatePassword"
@@ -112,11 +110,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="8dp"
-                        android:text="Update Password"
                         android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
-                        />
+                        android:text="비밀번호 업데이트" />
 
                 </LinearLayout>
 
@@ -127,8 +124,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:gravity="center">
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
                     android:id="@+id/homeTab"
