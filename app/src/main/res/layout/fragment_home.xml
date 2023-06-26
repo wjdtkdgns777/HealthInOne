@@ -29,7 +29,7 @@
                 android:id="@+id/descriptionTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="여기에 각 날짜에 대한 운동 기록을 저장하고 불러올 수 있습니다."
+                android:text="하루하루 운동기록을 저장해보세요!"
                 android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="8dp"
