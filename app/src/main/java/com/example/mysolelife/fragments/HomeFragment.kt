@@ -14,15 +14,25 @@ import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.navigation.findNavController
 import com.example.mysolelife.R
 import com.example.mysolelife.databinding.FragmentHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
     private lateinit var database: DatabaseReference
     private lateinit var binding : FragmentHomeBinding
+    private var uid: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        database = FirebaseDatabase.getInstance().getReference("exerciseRecords")
+
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+        if (firebaseUser != null) {
+            uid = firebaseUser.uid
+            database = FirebaseDatabase.getInstance().getReference("exerciseRecords/$uid")
+        } else {
+            // No user is signed in
+        }
+
     }
 
     override fun onCreateView(

@@ -22,6 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.auth.ktx.userProfileChangeRequest
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import com.yalantis.ucrop.UCrop
 //import com.yalantis.ucrop.UCrop
 import java.io.File
 
@@ -98,7 +99,7 @@ class StoreFragment : Fragment() {
             user!!.updatePassword(newPassword)
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
-                        Log.d(TAG, "User email address updated.")
+                        Log.d(TAG, "User password updated.")
                     }
                 }
         }
@@ -112,62 +113,55 @@ class StoreFragment : Fragment() {
             it.findNavController().navigate(R.id.action_storeFragment_to_talkFragment)
         }
 
-//        binding.bookmarkTab.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_bookmarkFragment)
-//        }
-//
-//        binding.tipTab.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_storeFragment_to_tipFragment)
-//        }
 
         return binding.root
     }
 
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data?.data != null) {
-//            val selectedImageUri = data.data
-//
-//            val destinationUri = Uri.fromFile(File(context?.cacheDir, "cropped"))
-//
-//            val options = UCrop.Options()
-//            options.setCircleDimmedLayer(true)
-//
-//            if (isAdded) {
-//                UCrop.of(selectedImageUri!!, destinationUri)
-//                    .withOptions(options)
-//                    .start(context ?: return, this, UCROP_REQUEST_CODE)
-//            }
-//
-//
-//        } else if (requestCode == UCROP_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
-//            val resultUri = UCrop.getOutput(data)
-//
-//            if (resultUri != null) {
-//                val user = Firebase.auth.currentUser
-//                val uid = user?.uid
-//
-//                val storageReference = Firebase.storage.reference.child("userProfiles/$uid")
-//
-//                storageReference.putFile(resultUri)
-//                    .addOnSuccessListener {
-//                        storageReference.downloadUrl.addOnSuccessListener { uri ->
-//                            val profileUpdates = userProfileChangeRequest {
-//                                photoUri = uri
-//                            }
-//
-//                            user!!.updateProfile(profileUpdates)
-//                                .addOnCompleteListener { task ->
-//                                    if (task.isSuccessful) {
-//                                        Glide.with(this)
-//                                            .load(uri)
-//                                            .into(binding.userImage)
-//                                    }
-//                                }
-//                        }
-//                    }
-//            }
-//        }
-//    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == GALLERY_REQUEST_CODE && resultCode == Activity.RESULT_OK && data?.data != null) {
+            val selectedImageUri = data.data
+
+            val destinationUri = Uri.fromFile(File(context?.cacheDir, "cropped"))
+
+            val options = UCrop.Options()
+            options.setCircleDimmedLayer(true)
+
+            if (isAdded) {
+                UCrop.of(selectedImageUri!!, destinationUri)
+                    .withOptions(options)
+                    .start(context ?: return, this, UCROP_REQUEST_CODE)
+            }
+
+
+        } else if (requestCode == UCROP_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            val resultUri = UCrop.getOutput(data)
+
+            if (resultUri != null) {
+                val user = Firebase.auth.currentUser
+                val uid = user?.uid
+
+                val storageReference = Firebase.storage.reference.child("userProfiles/$uid")
+
+                storageReference.putFile(resultUri)
+                    .addOnSuccessListener {
+                        storageReference.downloadUrl.addOnSuccessListener { uri ->
+                            val profileUpdates = userProfileChangeRequest {
+                                photoUri = uri
+                            }
+
+                            user!!.updateProfile(profileUpdates)
+                                .addOnCompleteListener { task ->
+                                    if (task.isSuccessful) {
+                                        Glide.with(this)
+                                            .load(uri)
+                                            .into(binding.userImage)
+                                    }
+                                }
+                        }
+                    }
+            }
+        }
+    }
 }
