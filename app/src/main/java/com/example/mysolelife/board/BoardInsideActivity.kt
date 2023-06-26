@@ -83,7 +83,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     val item = dataModel.getValue(CommentModel::class.java)
                     commentDataList.add(item!!)
                 }
-                    commentAdapter.notifyDataSetChanged()
+                commentAdapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -175,7 +175,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     val writeUid = dataModel.uid
 
                     if (myUid.equals(writeUid)) {
-                      //  Toast.makeText(baseContext, "내가 글쓴이", Toast.LENGTH_LONG).show()
+                        //  Toast.makeText(baseContext, "내가 글쓴이", Toast.LENGTH_LONG).show()
                         binding.boardSettingIcon.isVisible = true
                     } else {
                         // Toast.makeText(baseContext, "내가 글쓴이 아님", Toast.LENGTH_LONG).show()

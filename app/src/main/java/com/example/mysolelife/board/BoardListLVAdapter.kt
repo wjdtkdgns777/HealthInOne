@@ -31,7 +31,7 @@ class BoardListLVAdapter(val boardList : MutableList<BoardModel>): BaseAdapter()
         var view = convertView
 
         //if(view==null){
-            view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item,parent,false)
+        view = LayoutInflater.from(parent?.context).inflate(R.layout.board_list_item,parent,false)
         //}
 
         val itemLinearLayoutView = view?.findViewById<LinearLayout>(R.id.itemView)

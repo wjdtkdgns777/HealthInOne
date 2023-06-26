@@ -34,6 +34,7 @@ class BoardWriteActivity : AppCompatActivity() {
         binding.writeBtn.setOnClickListener {
             val title = binding.titleArea.text.toString()
             val content = binding.contentArea.text.toString()
+            val userEmail = FBAuth.getEmail()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
 
@@ -51,7 +52,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
             FBRef.boardRef
                 .child(key)
-                .setValue(BoardModel(title,content,uid,time))
+                .setValue(BoardModel(title,content,uid,time,userEmail))
 
             //Toast.makeText(this,"게시글 입력 완료",Toast.LENGTH_LONG).show()
             if(isImageUpload==true) {

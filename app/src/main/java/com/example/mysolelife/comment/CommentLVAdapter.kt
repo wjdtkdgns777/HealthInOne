@@ -27,17 +27,17 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>):BaseAdapter(
         var view = convertView
 
         if(view==null){
-        view = LayoutInflater.from(parent?.context).inflate(R.layout.comment_list_item,parent,false)
+            view = LayoutInflater.from(parent?.context).inflate(R.layout.comment_list_item,parent,false)
         }
 
 
         val title = view?.findViewById<TextView>(R.id.commentArea)
         val time = view?.findViewById<TextView>(R.id.timeArea)
-
+        val userEmail = view?.findViewById<TextView>(R.id.userEmail)
 
         title!!.text = commentList[position].commentTitle
         time!!.text = commentList[position].commentCreatedTime
-
+        userEmail!!.text = FBAuth.getEmail()
 
         return view!!
     }
