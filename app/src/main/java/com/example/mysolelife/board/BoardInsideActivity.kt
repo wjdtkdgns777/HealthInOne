@@ -100,6 +100,7 @@ class BoardInsideActivity : AppCompatActivity() {
             .setValue(
                 CommentModel(
                     binding.commentArea.text.toString(),
+                    FBAuth.getEmail(),
                     FBAuth.getTime()
                 )
             )
@@ -169,6 +170,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.titleArea.text = dataModel!!.title
                     binding.textArea.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
+
 
 
                     val myUid = FBAuth.getUid()
