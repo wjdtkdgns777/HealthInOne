@@ -20,9 +20,11 @@ class BoardListLVAdapter(val boardList : MutableList<BoardModel>): BaseAdapter()
         return boardList[position]
     }
 
+
     override fun getItemId(position:  Int): Long {
         return position.toLong()
     }
+
 
     override fun getView(position: Int, convertView: View?, parent : ViewGroup?): View {
 
@@ -37,6 +39,7 @@ class BoardListLVAdapter(val boardList : MutableList<BoardModel>): BaseAdapter()
         val title = view?.findViewById<TextView>(R.id.titleArea)
         val content = view?.findViewById<TextView>(R.id.contentArea)
         val time = view?.findViewById<TextView>(R.id.timeArea)
+        val userName = view?.findViewById<TextView>(R.id.userName)
 
 
         //게시글 누구인지 색으로 표시
@@ -47,6 +50,7 @@ class BoardListLVAdapter(val boardList : MutableList<BoardModel>): BaseAdapter()
         title!!.text = boardList[position].title
         content!!.text = boardList[position].content
         time!!.text = boardList[position].time
+        userName!!.text = boardList[position].email
 
 
         return view!!

@@ -34,9 +34,9 @@ class BookmarkFragment : Fragment() {
             it.findNavController().navigate(R.id.action_bookmarkFragment_to_talkFragment)
         }
 
-        binding.tipTab.setOnClickListener{
-            it.findNavController().navigate(R.id.action_bookmarkFragment_to_tipFragment)
-        }
+//        binding.tipTab.setOnClickListener{
+//            it.findNavController().navigate(R.id.action_bookmarkFragment_to_tipFragment)
+//        }
 
         binding.storeTab.setOnClickListener{
             it.findNavController().navigate(R.id.action_bookmarkFragment_to_storeFragment)

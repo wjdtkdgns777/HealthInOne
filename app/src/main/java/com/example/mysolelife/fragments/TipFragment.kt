@@ -42,9 +42,9 @@ class TipFragment : Fragment() {
             it.findNavController().navigate(R.id.action_tipFragment_to_talkFragment)
         }
 
-        binding.bookmarkTab.setOnClickListener{
-            it.findNavController().navigate(R.id.action_tipFragment_to_bookmarkFragment)
-        }
+//        binding.bookmarkTab.setOnClickListener{
+//            it.findNavController().navigate(R.id.action_tipFragment_to_bookmarkFragment)
+//        }
 
         binding.storeTab.setOnClickListener{
             it.findNavController().navigate(R.id.action_tipFragment_to_storeFragment)

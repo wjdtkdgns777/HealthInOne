@@ -170,6 +170,7 @@ class BoardInsideActivity : AppCompatActivity() {
                     binding.textArea.text = dataModel!!.content
                     binding.timeArea.text = dataModel!!.time
 
+
                     val myUid = FBAuth.getUid()
                     val writeUid = dataModel.uid
 

@@ -81,13 +81,13 @@ class TalkFragment : Fragment() {
             it.findNavController().navigate(R.id.action_talkFragment_to_homeFragment)
         }
 
-        binding.tipTab.setOnClickListener {
-            it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
-        }
-
-        binding.bookmarkTab.setOnClickListener {
-            it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
-        }
+//        binding.tipTab.setOnClickListener {
+//            it.findNavController().navigate(R.id.action_talkFragment_to_tipFragment)
+//        }
+//
+//        binding.bookmarkTab.setOnClickListener {
+//            it.findNavController().navigate(R.id.action_talkFragment_to_bookmarkFragment)
+//        }
 
         binding.storeTab.setOnClickListener {
             it.findNavController().navigate(R.id.action_talkFragment_to_storeFragment)
