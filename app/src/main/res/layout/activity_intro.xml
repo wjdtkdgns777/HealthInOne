@@ -56,7 +56,7 @@
                     android:id="@+id/noAccountBtn"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:text="비회원 가입"
+                    android:text="둘러보기"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:background="@drawable/background_radius"
