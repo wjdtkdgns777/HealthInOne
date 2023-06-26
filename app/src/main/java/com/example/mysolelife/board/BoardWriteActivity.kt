@@ -14,6 +14,7 @@ import com.example.mysolelife.R
 import com.example.mysolelife.databinding.ActivityBoardWriteBinding
 import com.example.mysolelife.utils.FBAuth
 import com.example.mysolelife.utils.FBRef
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import java.io.ByteArrayOutputStream
@@ -37,6 +38,7 @@ class BoardWriteActivity : AppCompatActivity() {
             val userEmail = FBAuth.getEmail()
             val uid = FBAuth.getUid()
             val time = FBAuth.getTime()
+            val displayName = Firebase.auth.currentUser?.displayName
 
             Log.d(TAG, title)
             Log.d(TAG, content)
@@ -52,7 +54,7 @@ class BoardWriteActivity : AppCompatActivity() {
 
             FBRef.boardRef
                 .child(key)
-                .setValue(BoardModel(title,content,uid,time,userEmail))
+                .setValue(BoardModel(title,content,uid,time,userEmail,displayName))
 
             //Toast.makeText(this,"게시글 입력 완료",Toast.LENGTH_LONG).show()
             if(isImageUpload==true) {
