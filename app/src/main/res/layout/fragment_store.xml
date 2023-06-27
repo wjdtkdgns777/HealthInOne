@@ -39,6 +39,7 @@
                     android:background="@drawable/custom_button"
                     android:paddingLeft="16dp"
                     android:paddingRight="16dp"
+                    android:textStyle="bold"
                     android:text="프로필 이미지 변경" />
 
                 <View
@@ -76,6 +77,7 @@
                         android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
+                        android:textStyle="bold"
                         android:text="닉네임 업데이트" />
 
                     <EditText
@@ -94,6 +96,7 @@
                         android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
+                        android:textStyle="bold"
                         android:text="이메일 업데이트" />
 
                     <EditText
@@ -113,6 +116,7 @@
                         android:background="@drawable/custom_button"
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
+                        android:textStyle="bold"
                         android:text="비밀번호 업데이트" />
 
                 </LinearLayout>

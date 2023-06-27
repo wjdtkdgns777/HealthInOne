@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -66,6 +67,7 @@ class StoreFragment : Fragment() {
             val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
 
             startActivityForResult(galleryIntent, GALLERY_REQUEST_CODE)
+
         }
 
         binding.btnUpdateName.setOnClickListener {
@@ -78,6 +80,8 @@ class StoreFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "User name updated.")
+                        Toast.makeText(context,"닉네임이 변경되었습니다",Toast.LENGTH_LONG).show()
+                        binding.editUserName.setText("")
                     }
                 }
         }
@@ -89,6 +93,8 @@ class StoreFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "User email address updated.")
+                        Toast.makeText(context,"이메일이 변경되었습니다",Toast.LENGTH_LONG).show()
+                        binding.editEmail.setText("")
                     }
                 }
         }
@@ -100,6 +106,8 @@ class StoreFragment : Fragment() {
                 .addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         Log.d(TAG, "User password updated.")
+                        Toast.makeText(context,"비밀번호가 변경되었습니다",Toast.LENGTH_LONG).show()
+                        binding.editPassword.setText("")
                     }
                 }
         }

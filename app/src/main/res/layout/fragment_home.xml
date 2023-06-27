@@ -43,9 +43,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                app:layout_constraintStart_toStartOf="parent"
+                android:background="#00EFF1F1"
+                android:focusedMonthDateColor="@color/mainColor"
+                android:foregroundTint="#FFFFFF"
+                android:selectedWeekBackgroundColor="#3A4EFF"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:selectedWeekBackgroundColor="@color/mainColor"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
 
 
