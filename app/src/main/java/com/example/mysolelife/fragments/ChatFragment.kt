@@ -69,7 +69,7 @@ class ChatFragment : Fragment() {
         val jsonObject = JSONObject()
         val jsonArray = JSONArray("[{\"role\": \"user\", \"content\": \"$input\"}]")
         jsonObject.put("messages", jsonArray)
-        jsonObject.put("model", "gpt-3.5-turbo")
+        jsonObject.put("model", "gpt-4")
 
         val stringRequest = object : JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
@@ -89,7 +89,7 @@ class ChatFragment : Fragment() {
             override fun getHeaders(): MutableMap<String, String> {
                 var map = HashMap<String, String>()
                 map.put("Content-Type", "application/json")
-                map.put("Authorization", "Bearer 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")
+                map.put("Authorization", "Bearer 여기에 api키 입력하세요")
                 return map
             }
         }
