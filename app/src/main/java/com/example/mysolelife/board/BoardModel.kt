@@ -5,5 +5,6 @@ data class BoardModel (
     val content : String="",
     val uid : String="",
     val time : String="",
-    val email : String=""
+    val email : String="",
+    var displayName: String? = null
         )
