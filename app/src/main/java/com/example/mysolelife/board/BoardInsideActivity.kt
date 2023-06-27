@@ -19,6 +19,7 @@ import com.example.mysolelife.fragments.TalkFragment
 import com.example.mysolelife.utils.FBAuth
 import com.example.mysolelife.utils.FBRef
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -94,14 +95,16 @@ class BoardInsideActivity : AppCompatActivity() {
     }
 
     fun insertComment(key: String) {
+        val displayName = Firebase.auth.currentUser?.displayName ?: "Anonymous" // 현재 사용자의 이름을 가져옵니다
+
         FBRef.commentRef
             .child(key)
             .push()
             .setValue(
                 CommentModel(
                     binding.commentArea.text.toString(),
-                    FBAuth.getEmail(),
-                    FBAuth.getTime()
+                    FBAuth.getTime(),
+                    displayName
                 )
             )
 
