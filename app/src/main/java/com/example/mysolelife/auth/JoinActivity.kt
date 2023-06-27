@@ -34,6 +34,7 @@ class JoinActivity : AppCompatActivity() {
             val email = binding.emailArea.text.toString()
             val pwd1 = binding.pwdArea1.text.toString()
             val pwd2 = binding.pwdArea2.text.toString()
+
             var isGoToJoin = true
 
             // 값이 비어 있는지 확인

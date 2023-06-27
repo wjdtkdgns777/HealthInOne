@@ -42,5 +42,4 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>):BaseAdapter(
         return view!!
     }
 
-
 }
