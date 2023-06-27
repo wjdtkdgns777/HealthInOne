@@ -33,10 +33,10 @@ class CommentLVAdapter(val commentList : MutableList<CommentModel>):BaseAdapter(
 
         val title = view?.findViewById<TextView>(R.id.commentArea)
         val time = view?.findViewById<TextView>(R.id.timeArea)
-        val userEmail = view?.findViewById<TextView>(R.id.userNameArea)
+        val userName = view?.findViewById<TextView>(R.id.userNameArea)
 
         title!!.text = commentList[position].commentTitle
-        userEmail!!.text = FBAuth.getUserName()
+        userName!!.text = commentList[position].commentAuthor
         time!!.text = commentList[position].commentCreatedTime
 
         return view!!
