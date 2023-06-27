@@ -45,7 +45,7 @@
                 android:layout_marginTop="30dp"
                 android:background="#00EFF1F1"
                 android:focusedMonthDateColor="@color/mainColor"
-                android:foregroundTint="#FFFFFF"
+                android:foregroundTint="#3A4EFF"
                 android:selectedWeekBackgroundColor="#3A4EFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
