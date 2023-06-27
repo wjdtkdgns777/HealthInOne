@@ -56,7 +56,7 @@ class StoreFragment : Fragment() {
             // Update the views
             // For example:
             Glide.with(this)
-                .load(photoUrl)
+                .load(photoUrl).circleCrop()
                 .into(binding.userImage)
             binding.editUserName.setText(name)
             binding.editEmail.setText(email)
@@ -163,7 +163,7 @@ class StoreFragment : Fragment() {
                                 .addOnCompleteListener { task ->
                                     if (task.isSuccessful) {
                                         Glide.with(this)
-                                            .load(uri)
+                                            .load(uri).circleCrop()
                                             .into(binding.userImage)
                                     }
                                 }
