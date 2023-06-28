@@ -23,6 +23,8 @@ import com.stfalcon.chatkit.messages.MessagesListAdapter
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
+import android.widget.ProgressBar
+import androidx.core.view.isVisible
 
 class ChatFragment : Fragment() {
 
@@ -32,12 +34,14 @@ class ChatFragment : Fragment() {
     lateinit var us: User
     lateinit var chatgpt: User
     lateinit var adapter: MessagesListAdapter<Message>
+    lateinit var loadingBar: ProgressBar
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_chat, container, false)
 
         sendBtn = view.findViewById(R.id.imageButton2)
-
+        loadingBar = view.findViewById(R.id.loadingBar)
         editText = view.findViewById(R.id.editTextTextPersonName2)
         messagesList = view.findViewById(R.id.messagesList2)
 
@@ -65,15 +69,18 @@ class ChatFragment : Fragment() {
         // Instantiate the RequestQueue.
         val queue = Volley.newRequestQueue(requireContext())
         val url = "https://api.openai.com/v1/chat/completions"
+        loadingBar.isVisible = true
 
         val jsonObject = JSONObject()
         val jsonArray = JSONArray("[{\"role\": \"user\", \"content\": \"$input\"}]")
         jsonObject.put("messages", jsonArray)
         jsonObject.put("model", "gpt-4")
+        jsonObject.put("max_tokens", 4096)
 
         val stringRequest = object : JsonObjectRequest(
             Request.Method.POST, url, jsonObject,
             Response.Listener<JSONObject> { response ->
+                loadingBar.isVisible = false
                 var answer = response.getJSONArray("choices").getJSONObject(0).getJSONObject("message")
                     .getString("content")
                 var message = Message(
@@ -84,12 +91,15 @@ class ChatFragment : Fragment() {
                 )
                 adapter.addToStart(message, true)
             },
-            Response.ErrorListener { }
+            Response.ErrorListener {
+
+                Response.ErrorListener { loadingBar.isVisible = false } // 오류가 발생하면 로딩바를 숨김
+            }
         ) {
             override fun getHeaders(): MutableMap<String, String> {
                 var map = HashMap<String, String>()
                 map.put("Content-Type", "application/json")
-                map.put("Authorization", "Bearer 여기에 api키 입력하세요")
+                map.put("Authorization", "Bearer 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")
                 return map
             }
         }
