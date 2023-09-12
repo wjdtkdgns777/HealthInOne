@@ -99,7 +99,7 @@ class ChatFragment : Fragment() {
             override fun getHeaders(): MutableMap<String, String> {
                 var map = HashMap<String, String>()
                 map.put("Content-Type", "application/json")
-                map.put("Authorization", "Bearer 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")
+                map.put("Authorization", "Bearer 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")
                 return map
             }
         }

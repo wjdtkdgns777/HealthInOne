@@ -33,7 +33,7 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, pwd).addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     // Sign in success, display a message to the user.
-                    Toast.makeText(baseContext, "Authentication succeeded.", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(baseContext, "Authentication succeeded.", Toast.LENGTH_SHORT).show()
 
                     val intent = Intent(this, MainActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
