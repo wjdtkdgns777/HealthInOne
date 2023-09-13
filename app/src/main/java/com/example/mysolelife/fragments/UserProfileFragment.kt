@@ -27,10 +27,8 @@ import com.yalantis.ucrop.UCrop
 //import com.yalantis.ucrop.UCrop
 import java.io.File
 
-import java.util.*
 
-
-class StoreFragment : Fragment() {
+class UserProfileFragment : Fragment() {
     private lateinit var binding: FragmentStoreBinding
     private val GALLERY_REQUEST_CODE = 1
     private val UCROP_REQUEST_CODE = 2

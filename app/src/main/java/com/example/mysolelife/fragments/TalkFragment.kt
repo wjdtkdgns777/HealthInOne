@@ -14,9 +14,7 @@ import com.example.mysolelife.board.BoardInsideActivity
 import com.example.mysolelife.board.BoardListLVAdapter
 import com.example.mysolelife.board.BoardModel
 import com.example.mysolelife.board.BoardWriteActivity
-import com.example.mysolelife.contentsList.ContentRVAdapter
 import com.example.mysolelife.databinding.FragmentTalkBinding
-import com.example.mysolelife.databinding.FragmentTipBinding
 import com.example.mysolelife.utils.FBRef
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

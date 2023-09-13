@@ -26,7 +26,7 @@ import java.util.*
 import android.widget.ProgressBar
 import androidx.core.view.isVisible
 
-class ChatFragment : Fragment() {
+class CommunityFragment : Fragment() {
 
     lateinit var sendBtn: ImageButton
     lateinit var editText: EditText
